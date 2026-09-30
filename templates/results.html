@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ title }}</h2>
+
+{% if results.budget_allocation %}
+<div class="card">
+    <h3>Suggested Budget Split</h3>
+    <ul>
+    {% for cat, amt in results.budget_allocation.items() %}
+        <li><strong>{{ cat }}:</strong> ₹{{ amt }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<h3 style="margin-top: 1.5rem;">Recommended Items</h3>
+<div class="card-grid">
+    {% for item in results.items %}
+    <div class="card">
+        <h4>{{ item.name }}</h4>
+        <p><strong>Category:</strong> {{ item.category }}</p>
+        <p><strong>Price:</strong> ₹{{ item.price }}</p>
+        <p><strong>Platform:</strong> {{ item.platform }}</p>
+        <p><em>{{ item.reason }}</em></p>
+        {% if item.url_search %}
+        <a href="{{ item.url_search }}" target="_blank" class="btn">View Product</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+{% if results.savings_tip %}
+<div class="card" style="margin-top: 1.5rem; background-color: #e0f2fe;">
+    <h4>💡 Smart Savings Tip</h4>
+    <p>{{ results.savings_tip }}</p>
+</div>
+{% endif %}
+{% endblock %}

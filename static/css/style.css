@@ -1,0 +1,150 @@
+ * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+
+/* Header */
+
+header {
+    text-align: center;
+    padding: 35px 20px;
+    background: #1f2937;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 35px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+
+/* Dashboard */
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 20px;
+}
+
+
+/* Cards */
+
+.card {
+    background: white;
+    width: 300px;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    line-height: 1.6;
+}
+
+
+/* Buttons */
+
+button {
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #2563eb;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+
+/* Planner */
+
+.planner-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.planner-container h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.planner-container > p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* Form */
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+
+.planner-container button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+/* Result */
+
+.result {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #eef2ff;
+}
+
+.result h2 {
+    margin-top: 0;
+}
+
+
+/* Back link */
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

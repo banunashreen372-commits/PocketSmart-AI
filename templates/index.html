@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PocketSmart AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>💰 PocketSmart AI</h1>
+        <p>Smart planning for your money</p>
+    </header>
+
+    <main class="dashboard">
+
+        <div class="card">
+            <h2>🏠 Home Planner</h2>
+            <p>Plan your home expenses and manage your budget.</p>
+
+            <a href="/home-planner">
+                <button>Open Home Planner</button>
+            </a>
+        </div>
+
+
+        <div class="card">
+            <h2>💎 Jewelry Planner</h2>
+            <p>Calculate jewelry expenses according to your budget.</p>
+
+            <a href="/jewelry-planner">
+                <button>Open Jewelry Planner</button>
+            </a>
+        </div>
+
+
+        <div class="card">
+            <h2>🎉 Party Budget</h2>
+            <p>Plan food, decoration and other party expenses.</p>
+
+            <a href="/party-budget">
+                <button>Open Party Budget</button>
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>

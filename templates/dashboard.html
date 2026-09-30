@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome, {{ user }}</h2>
+<a href="/logout" style="color: red;">Logout</a>
+
+<h3 style="margin-top: 2rem;">Your Query History</h3>
+<div class="card">
+    {% if history %}
+        <ul>
+        {% for item in history %}
+            <li><strong>{{ item.type }}</strong>: Budget ₹{{ item.budget }} (Items suggested: {{ item.items_count }})</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No query history found yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

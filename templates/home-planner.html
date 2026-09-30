@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Planner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="planner-container">
+
+        <h1>🏠 Home Planner</h1>
+
+        <p>Calculate your monthly home expenses.</p>
+
+        <label>Monthly Income (₹)</label>
+        <input type="number" id="income" placeholder="Enter income">
+
+
+        <label>Rent / House Expense (₹)</label>
+        <input type="number" id="rent" placeholder="Enter rent">
+
+
+        <label>Food Expense (₹)</label>
+        <input type="number" id="food" placeholder="Enter food expense">
+
+
+        <label>Electricity & Bills (₹)</label>
+        <input type="number" id="bills" placeholder="Enter bills">
+
+
+        <label>Travel Expense (₹)</label>
+        <input type="number" id="travel" placeholder="Enter travel expense">
+
+
+        <label>Other Expenses (₹)</label>
+        <input type="number" id="other" placeholder="Enter other expenses">
+
+
+        <button onclick="calculateHome()">
+            Calculate
+        </button>
+
+
+        <div id="home-result" class="result"></div>
+
+        <br>
+
+        <a href="/">⬅ Back to Home</a>
+
+    </div>
+
+
+<script>
+
+function calculateHome() {
+
+    let income = Number(document.getElementById("income").value);
+    let rent = Number(document.getElementById("rent").value);
+    let food = Number(document.getElementById("food").value);
+    let bills = Number(document.getElementById("bills").value);
+    let travel = Number(document.getElementById("travel").value);
+    let other = Number(document.getElementById("other").value);
+
+    if (income <= 0) {
+        document.getElementById("home-result").innerHTML =
+            "<p>Please enter your monthly income.</p>";
+        return;
+    }
+
+    let totalExpense = rent + food + bills + travel + other;
+
+    let balance = income - totalExpense;
+
+    let message;
+
+    if (balance >= 0) {
+        message = "You are within your income.";
+    } else {
+        message = "Your expenses are higher than your income.";
+    }
+
+    document.getElementById("home-result").innerHTML = `
+        <h2>Home Budget Result</h2>
+
+        <p>Total Expenses:
+        ₹${totalExpense.toFixed(2)}</p>
+
+        <p>Remaining Balance:
+        ₹${balance.toFixed(2)}</p>
+
+        <p>${message}</p>
+    `;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}
+History - PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="history-page">
+
+    <div class="page-heading">
+
+        <span class="badge">
+            📚 Your Plans
+        </span>
+
+        <h1>
+            Planning History
+        </h1>
+
+        <p>
+            View your previous budget plans.
+        </p>
+
+    </div>
+
+
+    {% if plans %}
+
+        <div class="history-list">
+
+            {% for plan in plans %}
+
+                <div class="history-card">
+
+                    <div class="history-icon">
+
+                        {% if plan["category"] == "Home Interior" %}
+                            🏠
+                        {% elif plan["category"] == "Party" %}
+                            🎉
+                        {% else %}
+                            💎
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="history-info">
+
+                        <h3>
+                            {{ plan["category"] }}
+                        </h3>
+
+                        <p>
+                            Budget:
+                            ₹{{ "%.0f"|format(plan["budget"]) }}
+                        </p>
+
+                        <small>
+                            {{ plan["created_at"] }}
+                        </small>
+
+                    </div>
+
+
+                    <a
+                        href="{{ url_for('results', plan_id=plan['id']) }}"
+                        class="btn small"
+                    >
+                        View
+                    </a>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-state">
+
+            <h3>
+                No history available
+            </h3>
+
+            <p>
+                Your generated plans will appear here.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

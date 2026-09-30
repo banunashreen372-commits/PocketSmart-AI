@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Jewelry Planner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="planner-container">
+
+    <h1>💎 Jewelry Planner</h1>
+
+    <p>Estimate the cost of your jewelry.</p>
+
+
+    <label>Jewelry Type</label>
+
+    <select id="jewelry">
+
+        <option>Ring</option>
+        <option>Chain</option>
+        <option>Earrings</option>
+        <option>Bangle</option>
+        <option>Necklace</option>
+
+    </select>
+
+
+    <label>Metal</label>
+
+    <select id="metal">
+
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="platinum">Platinum</option>
+
+    </select>
+
+
+    <label>Weight (grams)</label>
+
+    <input type="number"
+           id="weight"
+           placeholder="Enter weight">
+
+
+    <label>Your Budget (₹)</label>
+
+    <input type="number"
+           id="budget"
+           placeholder="Enter budget">
+
+
+    <button onclick="calculateJewelry()">
+        Calculate
+    </button>
+
+
+    <div id="jewelry-result"
+         class="result">
+    </div>
+
+
+    <br>
+
+    <a href="/">⬅ Back to Home</a>
+
+</div>
+
+
+<script>
+
+function calculateJewelry() {
+
+    let metal =
+        document.getElementById("metal").value;
+
+    let weight =
+        Number(document.getElementById("weight").value);
+
+    let budget =
+        Number(document.getElementById("budget").value);
+
+
+    if (weight <= 0 || budget <= 0) {
+
+        document.getElementById("jewelry-result").innerHTML =
+            "<p>Please enter valid weight and budget.</p>";
+
+        return;
+    }
+
+
+    /*
+       Example prices for calculator testing.
+       These are not live market prices.
+    */
+
+    let pricePerGram;
+
+
+    if (metal === "gold") {
+
+        pricePerGram = 7500;
+
+    } else if (metal === "silver") {
+
+        pricePerGram = 100;
+
+    } else {
+
+        pricePerGram = 3500;
+    }
+
+
+    let metalCost =
+        pricePerGram * weight;
+
+
+    let makingCharge =
+        metalCost * 0.10;
+
+
+    let total =
+        metalCost + makingCharge;
+
+
+    let remaining =
+        budget - total;
+
+
+    document.getElementById("jewelry-result").innerHTML = `
+
+        <h2>Jewelry Cost</h2>
+
+        <p>Metal: ${metal}</p>
+
+        <p>Weight: ${weight} grams</p>
+
+        <p>Metal Cost:
+        ₹${metalCost.toFixed(2)}</p>
+
+        <p>Making Charge:
+        ₹${makingCharge.toFixed(2)}</p>
+
+        <h3>
+        Total:
+        ₹${total.toFixed(2)}
+        </h3>
+
+        <p>
+        Budget:
+        ₹${budget.toFixed(2)}
+        </p>
+
+        <p>
+        Remaining:
+        ₹${remaining.toFixed(2)}
+        </p>
+
+    `;
+}
+
+</script>
+
+</body>
+</html>
